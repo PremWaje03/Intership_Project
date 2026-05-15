@@ -1,4 +1,5 @@
-const API_BASE = "/api/ideas";
+const API_ROOT = (import.meta.env.VITE_API_BASE_URL || "").replace(/\/$/, "");
+const API_BASE = `${API_ROOT}/api/ideas`;
 
 const handleResponse = async (response) => {
   const raw = await response.text();
@@ -24,7 +25,7 @@ const request = async (url, options) => {
     return await handleResponse(response);
   } catch (error) {
     if (error instanceof TypeError) {
-      throw new Error("Backend API is not reachable. Start server on port 5000 and MongoDB.");
+      throw new Error("Backend API is not reachable. Check backend URL and database connection.");
     }
     throw error;
   }

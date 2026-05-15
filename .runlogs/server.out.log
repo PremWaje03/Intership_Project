@@ -1,0 +1,5 @@
+Server running on http://localhost:5000
+[0mGET /api/health [32m200[0m 2.451 ms - 61[0m
+[0mPOST /api/ideas [32m201[0m 0.904 ms - 297[0m
+[0mGET /api/ideas [32m200[0m 0.534 ms - 299[0m
+[0mGET /api/ideas/stats [32m200[0m 0.433 ms - 161[0m

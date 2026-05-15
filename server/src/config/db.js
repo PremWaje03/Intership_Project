@@ -7,10 +7,15 @@ export const connectDB = async () => {
     return;
   }
 
+  const mongoUri = process.env.MONGO_URI;
+  if (!mongoUri) {
+    console.warn("MONGO_URI not set. Running with in-memory fallback store.");
+    return;
+  }
+
   isConnecting = true;
 
   try {
-    const mongoUri = process.env.MONGO_URI || "mongodb://127.0.0.1:27017/campus_project_hub";
     const conn = await mongoose.connect(mongoUri, {
       serverSelectionTimeoutMS: 5000
     });
